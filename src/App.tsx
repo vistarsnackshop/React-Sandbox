@@ -2,15 +2,17 @@
 import React, { useState } from "react";
 import ReadGemini from "./components/readGemini";
 import WriteGemini from "./components/writeGemini";
+import ImportExcel from "./components/importExcel";
+import ExportExcel from "./components/exportExcel";
 
 const modules = [
   { id: 1, name: "Installation", content: '../components/readGemini.tsx' },
   { id: 2, name: "Read Gemini Data", content: <ReadGemini /> },
   { id: 3, name: "Write Gemini Data", content: <WriteGemini /> },
-  { id: 4, name: "Read SQL Data", content: "Dive deeper in Module 3." },
+  { id: 4, name: "Read SQL Data", content: "Dive deeper in Module 3."},
   { id: 5, name: "Write SQL Data", content: "Dive deeper in Module 3." },
-  { id: 6, name: "Import Excel Data", content: "Dive deeper in Module 3." },
-  { id: 7, name: "Export Excel Data", content: "Dive deeper in Module 3." },
+  { id: 6, name: "Import Excel Data", content: <ImportExcel />  },
+  { id: 7, name: "Export Excel Data", content: <ExportExcel /> },
 ];
 
 export default function App() {
