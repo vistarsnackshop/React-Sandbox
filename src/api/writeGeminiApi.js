@@ -1,16 +1,12 @@
 import express from 'express';
 import odbc from 'odbc';
-const app = express();
-const PORT = 3000;
+const router = express.Router();
 
 // Your ODBC connection string
 const connectionString = "DSN=B4799;UID=VSAUSER;PWD=VSAUSER";
 
-// Middleware to parse JSON data
-app.use(express.json());
-
 // API endpoint to write phone number data to the Gemini database
-app.post('/writeGemini', async (req, res) => {
+router.post('/writeGemini', async (req, res) => {
   const { phoneNumber } = req.body; // Extract phone number from request body
 
   if (!phoneNumber) {
@@ -37,7 +33,4 @@ app.post('/writeGemini', async (req, res) => {
   }
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+export default router;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 // Define an interface to describe the structure of each data row
-// This ensures type safety and clarity for the data returned from the API
 interface DataRow {
   id: number; // Unique identifier for each row
   name: string; // Name of the person or entity
@@ -9,29 +8,29 @@ interface DataRow {
   // Add other properties as needed based on your database schema
 }
 
-const ReadGemini: React.FC = () => {
+const ReadSql: React.FC = () => {
   // State to hold the fetched data as an array of DataRow objects
   const [data, setData] = useState<DataRow[]>([]);
 
-  // State to manage the value of the phone number input field
-  const [phoneNumber, setPhoneNumber] = useState<string>('');
+  // State to manage the value of the name input field
+  const [name, setName] = useState<string>('');
 
   // State to hold error messages, if any
   const [error, setError] = useState<string | null>(null);
 
   /**
-   * Function to fetch data from the server by phone number
-   * Makes a POST request to the `/api/readGemini` endpoint
+   * Function to fetch data from the server by name
+   * Makes a POST request to the `/api/readByName` endpoint
    */
-  const fetchDataByPhoneNumber = async () => {
+  const fetchData = async () => {
     try {
-      // Send a POST request with the phone number as the payload
-      const response = await fetch('/api/readGemini', {
+      // Send a POST request with the name as the payload
+      const response = await fetch('/api/readSql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Specify JSON format
         },
-        body: JSON.stringify({ phoneNumber }), // Include the phone number in the request body
+        body: JSON.stringify({ name }), // Include the name in the request body
       });
       console.log(response);
       // If the response is not OK (status code 2xx), throw an error
@@ -49,7 +48,7 @@ const ReadGemini: React.FC = () => {
       setError(null);
     } catch (error) {
       // Handle errors and display a user-friendly message
-      setError('Error fetching data for the given phone number');
+      setError('Error fetching data for the given name');
       console.error('Error fetching data:', error); // Log the error for debugging
     }
   };
@@ -57,17 +56,17 @@ const ReadGemini: React.FC = () => {
   return (
     <div id="table-container" className="p-4">
       <div className="mb-4">
-        {/* Input field to enter the phone number */}
+        {/* Input field to enter the name */}
         <input
-          type="text" // Text input for entering phone numbers
-          value={phoneNumber} // Controlled component tied to `phoneNumber` state
-          onChange={(e) => setPhoneNumber(e.target.value)} // Update state on input change
-          placeholder="Enter phone number" // Placeholder text for clarity
+          type="text" // Text input for entering names
+          value={name} // Controlled component tied to `name` state
+          onChange={(e) => setName(e.target.value)} // Update state on input change
+          placeholder="Enter name" // Placeholder text for clarity
           className="border p-2 mr-2" // Basic styling for the input field
         />
         {/* Button to trigger the data fetch */}
         <button
-          onClick={fetchDataByPhoneNumber} // Call the fetch function on click
+          onClick={fetchData} // Call the fetch function on click
           className="bg-blue-500 text-white px-4 py-2" // Styling for the button
         >
           Search
@@ -112,4 +111,4 @@ const ReadGemini: React.FC = () => {
   );
 };
 
-export default ReadGemini;
+export default ReadSql;
