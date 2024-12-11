@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import ReadGemini from "./components/readGemini";
 import WriteGemini from "./components/writeGemini";
 import ImportExcel from "./components/importExcel";
