@@ -6,7 +6,7 @@ import writeSqlRoute from './src/api/writeSqlApi.js'
 
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
