@@ -25,7 +25,7 @@ const ReadSql: React.FC = () => {
   const fetchData = async () => {
     try {
       // Send a POST request with the name as the payload
-      const response = await fetch('/api/readSql', {
+      const response = await fetch('http://localhost:3001/readSql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Specify JSON format
