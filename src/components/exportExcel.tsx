@@ -11,7 +11,7 @@ const ExportExcel: React.FC = () => {
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
       try {
-        const response = await fetch('/api/readGemini');
+        const response = await fetch('http://localhost:3001/readGemini');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

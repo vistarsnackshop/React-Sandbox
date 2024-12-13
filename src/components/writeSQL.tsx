@@ -10,7 +10,7 @@ const WriteSql: React.FC = () => {
 
     // Send name to the backend or handle as needed
     try {
-      const response = await fetch('/api/writeSql', {
+      const response = await fetch('http://localhost:3001/writeSql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

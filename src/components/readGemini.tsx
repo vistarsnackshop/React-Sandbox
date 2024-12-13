@@ -26,7 +26,7 @@ const ReadGemini: React.FC = () => {
   const fetchDataByPhoneNumber = async () => {
     try {
       // Send a POST request with the phone number as the payload
-      const response = await fetch('/api/readGemini', {
+      const response = await fetch('http://localhost:3001/readGemini', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Specify JSON format

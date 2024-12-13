@@ -10,7 +10,7 @@ const WriteGemini: React.FC = () => {
 
     // Send phone number to the backend or handle as needed
     try {
-      const response = await fetch('/api/writeGemini', {
+      const response = await fetch('http://localhost:3001/writeGemini', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
