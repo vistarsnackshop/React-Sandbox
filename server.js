@@ -1,26 +1,25 @@
 import express from 'express';
-import path from 'path';
-import readGeminiRoute from './src/api/readGeminiApi.js';
-import writeGeminiRoute from './src/api/writeGeminiApi.js';
-import readSqlRoute from './src/api/readSqlApi.js';
-import writeSqlRoute from './src/api/writeSqlApi.js';
+import cors from 'cors';
+import readGeminiRoute from './src/api/readGeminiApi.js'
+import writeGeminiRoute from './src/api/writeGeminiApi.js'
+import readSqlRoute from './src/api/readSqlApi.js'
+import writeSqlRoute from './src/api/writeSqlApi.js'
+
+
 
 const app = express();
 const PORT = 3001;
 
-// Serve static files
-app.use('/sandbox/dist', express.static(path.resolve('./dist')));
+app.use(cors());
 
-// Proxy API routes
-app.use('/sandbox/src/api/readGemini', readGeminiRoute);
-app.use('/sandbox/src/api/writeGemini', writeGeminiRoute);
-app.use('/sandbox/src/api/readSql', readSqlRoute);
-app.use('/sandbox/src/api/writeSql', writeSqlRoute);
+// Middleware to parse JSON request bodies
+app.use(express.json());
 
-// Serve index.html for any other route
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve('./dist/index.html'));
-});
+// Use the routes
+app.use(readGeminiRoute);
+app.use(writeGeminiRoute);
+app.use(writeSqlRoute);
+app.use(readSqlRoute);
 
 // Start the server
 app.listen(PORT, () => {
