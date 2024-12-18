@@ -6,7 +6,7 @@ const router = express.Router();
 const config = {
     user: 'svc_Portal_User',                  // SQL Server username
     password: 'eFKkQyd(U-F)ye4AAeXuZK',              // SQL Server password
-    server: 'AZEVIMVSSDBWD01',          // Server address or IP (e.g., 'localhost', '192.168.1.1')
+    server: 'AZEVIMVSSDBWD01.performance.pfgc.com',          // Server address or IP (e.g., 'localhost', '192.168.1.1')
     database: 'Portal',         // Database name (e.g., 'SalesDB')
     options: {
       encrypt: true,                        // Enable for secure connections (e.g., for Azure SQL)
